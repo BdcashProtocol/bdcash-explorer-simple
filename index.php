@@ -31,6 +31,23 @@ if ($config["url_rewrite"]) {
     $url_path["richlist"] = $config["root_path"] . $config["explorer_path"] . '?action=richlist&v=';
 }
 
+$mn = $bitcoinrpc->getmasternodecount();
+        if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
+            exit($bitcoinrpc->error);
+        }
+        $output['MasternodeTotal'] = $mn['total'];
+        //baseinfo
+        $info = $bitcoinrpc->getinfo();
+        if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
+            exit($bitcoinrpc->error);
+        }
+        $output['versionWallet'] = $info['version'];
+        $output['protocolversion'] = $info['protocolversion'];
+        $output['blockcount'] = $info['blocks'];
+        $output['blockcount_url'] = "<a class=\"btn3\" href=\"" . $url_path["height"] . $info['blocks'] . "\">" . $info['blocks'] . "</a>";
+        $output['connections'] = $info['connections'];
+
+
 switch ($url_param_get_action) {
     case "":
         $getrawmempool = $bitcoinrpc->getrawmempool();
@@ -217,13 +234,13 @@ switch ($url_param_get_action) {
             exit($bitcoinrpc->error);
         }
         
-        $listmn['list'] = $mnInfo['rank'];
-        $listmn['list'] = $mnInfo['network'];
-        $listmn['list'] = $mnInfo['address'];
-        $listmn['list'] = $mnInfo['ipport'];
-        $listmn['list'] = $mnInfo['version'];
-        $listmn['list'] = $mnInfo['lastpaid'];
-        $listmn['list'] = $mnInfo['status'];
+        $listmn['rank'] = $mnInfo['rank'];
+        $listmn['network'] = $mnInfo['network'];
+        $listmn['address'] = $mnInfo['address'];
+        $listmn['ipport'] = $mnInfo['ipport'];
+        $listmn['version'] = $mnInfo['version'];
+        $listmn['lastpaid'] = $mnInfo['lastpaid'];
+        $listmn['status'] = $mnInfo['status'];
         
         $output['listmaster'][] = $listmn;
             $i--;

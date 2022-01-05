@@ -237,17 +237,6 @@ switch ($action) {
         echo clean_html($html);
         break;
         
-    case "listmasternodes":
-       
-        $header = loadfile("templates/header.html");
-        $body = loadfile("templates/masternodes.html");
-        $footer = loadfile("templates/footer.html");
-        $html = $header . $body . $footer;
-        $html = html_replace_common($html);
-        $html = html_replace($html, $listmasternodes);
-        echo clean_html($html);
-        break;
-        
     default:
         send404();
         break;
