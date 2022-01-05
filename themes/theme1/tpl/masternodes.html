@@ -1,0 +1,31 @@
+<div class="well"> 
+	<h2>List Masternodes</h2>
+	<div class="table table-responsive">
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Network</th>
+					<th>Address</th>
+					<th>IP / Port</th>
+					<th>Last Paid</th>
+                    <th>Protocol</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{$masternode_list_tbody}
+			</tbody>
+		</table>
+    <nav aria-label="Page navigation">
+		<ul class="pager">
+			<li class="" {$newer_page_display}>
+				<a href="{$newer_page}">
+					<span aria-hidden="true">&larr;</span> Newer</a></li>
+			<li>&nbsp;&nbsp;</li>
+			<li class="" {$older_page_display}>
+				<a href="{$older_page}">
+					Older <span aria-hidden="true">&rarr;</span></a></a></li>
+		</ul>
+	</nav>
+	</div> 

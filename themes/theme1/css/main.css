@@ -1,0 +1,60 @@
+.text-start {
+  text-align: left !important;
+}
+
+.text-end {
+  text-align: right !important;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {
+        height: 550px;
+        padding-top: 65px;
+        }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+    position: fixed;
+      left: 225px;
+      width: 225px;
+      margin-left: -225px;
+      background-color: #EDD710;
+      color: #000000;
+      height: 100%;
+      width: 225px;
+    
+       
+    }
+    .sidenav li a{
+      color: #000000;
+    }   
+     
+    .navbar{
+    background: #EDD710;
+    color: #000000;
+    border: none;
+        }
+    .navbar ul li a{
+    color: #000000;
+        }
+        
+    .bdcash-body{
+    margin-top: 25px;
+    margin-right: -115px;
+    right:-140px;
+    width: 90%;        
+    padding: 0;
+        margin-bottom:25px;
+        }    
+     
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #EDD710;
+      color: #00000;
+        position: fixed;
+    }    
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+       .bdcash-body {width: auto;} 
+    }

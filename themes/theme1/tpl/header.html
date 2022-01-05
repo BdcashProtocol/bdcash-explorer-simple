@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{$title}{$explorer_name}</title>
+	<meta name="description" content="{$description}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Place favicon.ico in the root directory -->
+	<!-- all css here -->
+	<!-- bootstrap v3.3.6 css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{$theme_path}css/main.css">
+</head>
+<body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid"  id="myNavbar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+        <a class="navbar-brand" href="{$root_path}">
+					<img src="{$theme_path}img/logo/header.png" alt="{$name} logo"
+						style="width: 104px; height: 32px;" />
+				</a>
+    </div>
+      <div class="navbar-form navbar-left navbar navbar-inverse col-sm-9">
+           <div class="collapse navbar-collapse">
+    
+          </div>
+      </div> 
+      
+      
+  </div>
+</nav>
+<div class="container">
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <h3>MENU</h3>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="{$root_path}{$explorer_path}">Home</a></li>
+		<li><a href="{$root_path}{$explorer_path}network">Network</a></li>
+		<li><a href="{$root_path}{$explorer_path}masternodes">Masternodes</a></li>
+        <li><a href="{$root_path}{$explorer_path}richlist">Rich List</a></li>
+      </ul><br>
+        <hr>
+        <h3>WALLET INFO:</h3>
+        Version: <strong>{$versionWallet}</strong><br />
+        Protocol: <strong>{$protocolversion}</strong><br />
+    </div> 
+      
+      <div class="col-sm-9 bdcash-body">
+          
+    <div class="well bg-info">
+        <span class="badge bg bg-warning">Ads {$name}</span>
+        <h3>News {$name} about Ecosystem.</h3>
+      </div>
+          
+    
+    <div class="col-sm-12 well text-center">
+    <form class="navbar-form">
+					<div class="form-group">
+						<input type="text" class="form-control col-sm-10" size="50"
+							placeholder="enter the block height/hash or txid" id="input_search_block">
+					</div>
+					<button type="button" class="btn btn-default"
+						onclick="search_block('{$search_url}')">Search</button>
+</form>
+      </div>
+    
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="well text-center">
+            <h4>Supply Total</h4>
+            <p>0.00000</p> 
+          </div>
+        </div>
+          
+          <div class="col-sm-2">
+          <div class="well text-center">
+            <h4>Masternodes</h4>
+            <p>{$MasternodeTotal}</p> 
+          </div>
+        </div>
+          
+          
+           <div class="col-sm-2">
+          <div class="well text-center">
+            <h4>Connections</h4>
+            <p>{$connections}</p> 
+          </div>
+        </div>
+          
+        <div class="col-sm-2">
+          <div class="well text-center">
+            <h4>Price USD</h4>
+            <p>0.01 (0.00BTC)</p> 
+          </div>
+        </div>
+          
+          <div class="col-sm-2">
+          <div class="well text-center">
+            <h4>Blocks</h4>
+            <p>{$blockcount_url}</p> 
+          </div>
+        </div>
+          
+          <div class="col-sm-2">
+          <div class="well text-center">
+            <h4>Hashrate</h4>
+            <p>{$hashrate}</p> 
+          </div>
+          </div>
+
+	</div>
