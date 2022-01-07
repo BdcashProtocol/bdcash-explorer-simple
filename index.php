@@ -31,7 +31,7 @@ if ($config["url_rewrite"]) {
     $url_path["richlist"] = $config["root_path"] . $config["explorer_path"] . '?action=richlist&v=';
 }
 
-$mn = $bitcoinrpc->getmasternodecount();
+        $mn = $bitcoinrpc->getmasternodecount();
         if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
             exit($bitcoinrpc->error);
         }
@@ -44,7 +44,7 @@ $mn = $bitcoinrpc->getmasternodecount();
         $output['versionWallet'] = $info['version'];
         $output['protocolversion'] = $info['protocolversion'];
         $output['blockcount'] = $info['blocks'];
-        $output['blockcount_url'] = "<a class=\"btn3\" href=\"" . $url_path["height"] . $info['blocks'] . "\">" . $info['blocks'] . "</a>";
+        $output['blockcount_url'] = "<a class=\"btn btn-link\" href=\"" . $url_path["height"] . $info['blocks'] . "\">" . $info['blocks'] . "</a>";
         $output['connections'] = $info['connections'];
 
 
@@ -98,28 +98,7 @@ switch ($url_param_get_action) {
         
         
     case "height":
-        // masternodeinfo
-        $mn = $bitcoinrpc->getmasternodecount();
-        if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
-            exit($bitcoinrpc->error);
-        }
-        $output['MasternodeTotal'] = $mn['total'];
-        //baseinfo
-        $info = $bitcoinrpc->getinfo();
-        if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
-            exit($bitcoinrpc->error);
-        }
-        $output['versionWallet'] = $info['version'];
-        $output['protocolversion'] = $info['protocolversion'];
-        $output['blockcount'] = $info['blocks'];
-        $output['blockcount_url'] = "<a class=\"btn3\" href=\"" . $url_path["height"] . $info['blocks'] . "\">" . $info['blocks'] . "</a>";
-        $output['connections'] = $info['connections'];
-        if ($config["proofof"] === "pow") {
-            $output['difficulty'] = short_number($info['difficulty'], 1000, 3, "");
-        } else {
-            $output['difficulty'] = $info['difficulty']['proof-of-work'];
-            $output['difficulty_pos'] = $info['difficulty']['proof-of-stake'];
-        }
+       
 
         $mininginfo = $bitcoinrpc->getmininginfo();
         if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
@@ -229,11 +208,20 @@ switch ($url_param_get_action) {
     // list masternodes
     case "masternodes":
         
+        $mn = $bitcoinrpc->getmasternodecount();
+        if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
+            exit($bitcoinrpc->error);
+        }
+        $output['MasternodeTotal'] = $mn['total'];
+        
+        
         $mnInfo = $bitcoinrpc->listmasternodes();
         if ($bitcoinrpc->status !== 200 && $bitcoinrpc->error !== '') {
             exit($bitcoinrpc->error);
         }
         
+        
+            
         $listmn['rank'] = $mnInfo['rank'];
         $listmn['network'] = $mnInfo['network'];
         $listmn['address'] = $mnInfo['address'];
@@ -245,7 +233,10 @@ switch ($url_param_get_action) {
         $output['listmaster'][] = $listmn;
             $i--;
         
-        if (count($output['listmaster']) > 0) {
+        
+        //echo json_encode($output);
+        
+        if (count($output['MasternodeTotal']) > 0) {
             foreach ($output['listmaster'] as $value) {
                 
             if ($value["status"] == "ENABLED"){
